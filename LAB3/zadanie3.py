@@ -16,7 +16,7 @@ if __name__ == "__main__":
         header = w[0:2].decode(errors="ignore")
         if header in possible_start:
             file_save = key + ".bmp"
-            print(f"Found header: {header} for key: {key} save file:{file_save}")
+            print(f"Found header: {header} for key: {key} save file: {file_save}")
             o = open(file_save, "wb")
             o.write(w)
             o.close()
