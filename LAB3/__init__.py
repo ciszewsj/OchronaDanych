@@ -1,0 +1,1 @@
+#Kolejne 6 - na podstawie obrazka różnica między CBC ECB(bmp crypt) - security ebp_encrypted.bmp
