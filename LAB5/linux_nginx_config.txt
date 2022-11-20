@@ -1,0 +1,9 @@
+sudo apt-get install nginx
+sudo vim /var/www/html/index.nginx-debian.html
+
+sudo vim /var/www/html/images/1.txt
+sudo vim /var/www/html/images/2.txt
+sudo vim /var/www/html/images/3.txt
+
+
+sudo apt-get install apache2-utils

