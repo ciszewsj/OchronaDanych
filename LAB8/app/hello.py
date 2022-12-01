@@ -32,6 +32,7 @@ def user_loader(username):
     row = sql.fetchone()
     try:
         username, password = row
+        print("znaleziono : " + username + " " + password)
     except:
         return None
 
@@ -58,13 +59,18 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
+        print("Wprowadzono : " + username + " " + password)
         user = user_loader(username)
+        print("PASSWORDS : " + password + " " + user.password)
+
         if user is None:
+            print("!@#?")
             return "Nieprawidłowy login lub hasło", 401
         if sha256_crypt.verify(password, user.password):
             login_user(user)
             return redirect('/hello')
         else:
+            print("TUTAJ>!@#?")
             return "Nieprawidłowy login lub hasło", 401
 
 
