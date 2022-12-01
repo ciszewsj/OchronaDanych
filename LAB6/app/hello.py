@@ -10,16 +10,17 @@ recent_users = deque(maxlen=3)
 
 
 def markdown_and_sanitize(markdown_string):
-    string_html = markdown.markdown(
-        markdown_string)
-    string_sanitized = bleach.clean(
-        string_html, tags =[
-            'p', 'a', 'ul', 'ol', 'li', 'blockquote',
-            'h1', 'h2', 'h3', 'h4', 'h5',
-            'strong', 'em',
-            'br',
-        ])
-    return string_sanitized
+    # string_html = markdown.markdown(
+    #     markdown_string)
+    # string_sanitized = bleach.clean(
+    #     string_html, tags =[
+    #         'p', 'a', 'ul', 'ol', 'li', 'blockquote',
+    #         'h1', 'h2', 'h3', 'h4', 'h5',
+    #         'strong', 'em',
+    #         'br',
+    #     ])
+    # return string_sanitized
+    return markdown_string
 
 
 @app.route("/")

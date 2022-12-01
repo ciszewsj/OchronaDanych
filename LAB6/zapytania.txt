@@ -1,18 +1,18 @@
-	<script>
-		setTimeout(function(){console.log
-		form = document.querySelector("form");
-		console.log(document.querySelectorAll("h1"))
-		console.log(document.querySelectorAll("input"))
-		form.addEventListener('submit', (event) => {
-		  event.preventDefault();
-		  alert('submitting');
-		  window.location.href = "http://www.google.com";
-		});
-		}, 0)
+<script>
+    setTimeout(function(){console.log
+    form = document.querySelector("form");
+    console.log(document.querySelectorAll("h1"))
+    console.log(document.querySelectorAll("input"))
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      alert('submitting');
+      window.location.href = "http://www.google.com";
+    });
+    }, 0)
 
-		
-	</script>
-	
+
+</script>
+
 
 
 <script>
