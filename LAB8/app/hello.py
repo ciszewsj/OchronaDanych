@@ -26,15 +26,18 @@ def user_loader(username):
 
     db = sqlite3.connect(DATABASE)
     sql = db.cursor()
-    ds = f"SELECT username, password FROM user WHERE username = '{username}'"
+    # ds = f"SELECT username, password FROM user WHERE username = '{username}'" #NOT_SAFE
+    ds = "SELECT username, password FROM user WHERE username = ?"
     print(ds)
-    sql.execute(ds)
+    # sql.execute(ds)#NOT_SAFE
+    sql.execute(ds, [username])
+
     row = sql.fetchone()
     try:
         username, password = row
-        print("znaleziono : " + username + " " + password)
     except:
         return None
+    print("znaleziono : " + username + " " + password)
 
     user = User()
     user.id = username
@@ -61,12 +64,12 @@ def login():
         password = request.form.get("password")
         print("Wprowadzono : " + username + " " + password)
         user = user_loader(username)
-        print("PASSWORDS : " + password + " " + user.password)
-
+        print(user)
         if user is None:
             print("!@#?")
             return "Nieprawidłowy login lub hasło", 401
         if sha256_crypt.verify(password, user.password):
+            print("PASSWORDS : " + password + " " + user.password)
             login_user(user)
             return redirect('/hello')
         else:
@@ -89,7 +92,8 @@ def hello():
 
         db = sqlite3.connect(DATABASE)
         sql = db.cursor()
-        sql.execute(f"SELECT id FROM notes WHERE username == '{username}'")
+        # sql.execute(f"SELECT id FROM notes WHERE username == '{username}'") - NOT_SAFE
+        sql.execute("SELECT id FROM notes WHERE username == ?", [username])
         notes = sql.fetchall()
 
         return render_template("hello.html", username=username, notes=notes)
@@ -105,9 +109,10 @@ def render():
     print("user_id" + username)
     db = sqlite3.connect(DATABASE)
     sql = db.cursor()
-    ds = f"INSERT INTO notes (username, note) VALUES ('{username}', '{rendered}')"
+    # ds = f"INSERT INTO notes (username, note) VALUES ('{username}', '{rendered}')"
+    ds = "INSERT INTO notes (username, note) VALUES (?, ?)"
     print(ds)
-    sql.execute(ds)
+    sql.execute(ds, [username, rendered])
     db.commit()
     return render_template("markdown.html", rendered=rendered)
 
@@ -117,7 +122,8 @@ def render():
 def render_old(rendered_id):
     db = sqlite3.connect(DATABASE)
     sql = db.cursor()
-    sql.execute(f"SELECT username, note FROM notes WHERE id == {rendered_id}")
+    # sql.execute(f"SELECT username, note FROM notes WHERE id == {rendered_id}")
+    sql.execute("SELECT username, note FROM notes WHERE id == ?", [rendered_id])
 
     try:
         username, rendered = sql.fetchone()
