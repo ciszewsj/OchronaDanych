@@ -1,0 +1,27 @@
+<html>
+<body>
+<h1>Hello {{ username }}!</h1>
+
+<form action={{ url_for('render') }} method="post">
+  <label for="markdown">Input some markdown:</label><br>
+  <textarea id="markdown" name="markdown" rows="20" cols="100"></textarea>
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+{% if notes|length > 0 %}
+<h1> Your notes: </h1>
+<ul>
+{% for note in notes %}
+  <li><a href="{{ url_for('render') }}/{{note.0}}"> Note {{ loop.index }}</a></li>
+{% endfor %}
+</ul>
+
+{% endif %}
+
+
+<form action={{ url_for('logout') }}>
+  <input type="submit" value="Log out" />
+</form>
+</body>
+</html>
