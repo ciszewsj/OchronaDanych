@@ -26,11 +26,12 @@ def user_loader(username):
 
     db = sqlite3.connect(DATABASE)
     sql = db.cursor()
-    # ds = f"SELECT username, password FROM user WHERE username = '{username}'" #NOT_SAFE
-    ds = "SELECT username, password FROM user WHERE username = ?"
+    ds = f"SELECT username, password FROM user WHERE username = '{username}'" #NOT_SAFE
+    # ds = "SELECT username, password FROM user WHERE username = ?"
     print(ds)
     # sql.execute(ds)#NOT_SAFE
-    sql.execute(ds, [username])
+    # sql.execute(ds, [username])
+    sql.execute(ds)
 
     row = sql.fetchone()
     try:
@@ -109,10 +110,11 @@ def render():
     print("user_id" + username)
     db = sqlite3.connect(DATABASE)
     sql = db.cursor()
-    # ds = f"INSERT INTO notes (username, note) VALUES ('{username}', '{rendered}')"
-    ds = "INSERT INTO notes (username, note) VALUES (?, ?)"
+    ds = f"INSERT INTO notes (username, note) VALUES ('{username}', '{rendered}')"
+    # ds = "INSERT INTO notes (username, note) VALUES (?, ?)"
     print(ds)
-    sql.execute(ds, [username, rendered])
+    # sql.execute(ds, [username, rendered])
+    sql.execute(ds)
     db.commit()
     return render_template("markdown.html", rendered=rendered)
 
