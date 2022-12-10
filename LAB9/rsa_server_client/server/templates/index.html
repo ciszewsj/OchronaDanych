@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Odebrane wiadomości</title>
+  </head>
+  <body>
+    <div class="container m-10">
+      <h1>Lista wiadomości:</h1>
+    </div>
+    <div class="container m-10">
+        {% for receiver, (message, sender) in messages.items() %}
+          <div class="card m-10">
+            <div class="card-header">
+              Adresat: {{receiver}} / Nadawca: {{sender}}
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{message}}</p>
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+  </body>
+</html>
