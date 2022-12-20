@@ -1,0 +1,9 @@
+
+/etc/hosts - do domeny
+
+docker run --rm -it -p5050:5050 wiklod/cert
+
+## sudo openssl req -new -key localhost.key.pem -out localhost.pl.csr
+## https://www.sslshopper.com/ssl-checker.html#hostname=isod.ee.pw.edu.pl:q::
+
+## openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365
